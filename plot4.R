@@ -18,6 +18,10 @@ data[,Sub_metering_2:=as.numeric(Sub_metering_2)]
 data[,Sub_metering_3:=as.numeric(Sub_metering_3)]
 data[,datetime:=data.frame(strptime( paste( Date, Time ), format="%Y-%m-%d %H:%M:%S" ))]
 
+# device
+filename <- "plot4.png"
+png(filename, 480, 480, units="px")
+
 par(mfrow = c(2,2))
 
 # plot1
@@ -42,3 +46,5 @@ legend("topright", pch="-",
 # plot4
 plot(data$datetime, data$Global_reactive_power,
      type="l", xlab="datetime", ylab="Global_reactive_power")
+
+dev.off()

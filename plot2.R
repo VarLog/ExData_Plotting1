@@ -13,6 +13,12 @@ data <- data[Date>=as.Date("2007-02-01") & Date<=as.Date("2007-02-02")]
 data[,Global_active_power:=as.numeric(Global_active_power)]
 data[,datetime:=data.frame(strptime( paste( Date, Time ), format="%Y-%m-%d %H:%M:%S" ))]
 
+# device
+filename <- "plot2.png"
+png(filename, 480, 480, units="px")
+
 # plot
 plot(data$datetime, data$Global_active_power, 
      type="l", xlab="", ylab="Global Active Power (kilowatts)")
+
+dev.off()

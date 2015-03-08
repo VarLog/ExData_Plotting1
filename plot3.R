@@ -15,6 +15,10 @@ data[,Sub_metering_2:=as.numeric(Sub_metering_2)]
 data[,Sub_metering_3:=as.numeric(Sub_metering_3)]
 data[,datetime:=data.frame(strptime( paste( Date, Time ), format="%Y-%m-%d %H:%M:%S" ))]
 
+# device
+filename <- "plot3.png"
+png(filename, 480, 480, units="px")
+
 # plot
 plot(data$datetime, data$Sub_metering_1, 
      type="l", xlab="", ylab="Energy sub metering")
@@ -25,3 +29,5 @@ legend("topright", pch="-",
        col=c("black","red","blue"),
        pt.cex=2,
        legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+dev.off()
