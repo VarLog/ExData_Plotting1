@@ -1,4 +1,4 @@
-#!/usr/bin/env R
+#!/usr/bin/env R CMD BATCH
 
 library(data.table)
 
@@ -14,4 +14,5 @@ data[,Global_active_power:=as.numeric(Global_active_power)]
 data[,datetime:=data.frame(strptime( paste( Date, Time ), format="%Y-%m-%d %H:%M:%S" ))]
 
 # plot
-plot(data$datetime, data$Global_active_power, type="l")
+plot(data$datetime, data$Global_active_power, 
+     type="l", xlab="", ylab="Global Active Power (kilowatts)")

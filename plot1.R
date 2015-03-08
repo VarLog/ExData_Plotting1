@@ -1,4 +1,4 @@
-#!/usr/bin/env R
+#!/usr/bin/env R CMD BATCH
 
 library(data.table)
 
@@ -13,4 +13,7 @@ data <- data[Date>=as.Date("2007-02-01") & Date<=as.Date("2007-02-02")]
 data[,Global_active_power:=as.numeric(Global_active_power)]
 
 # plot
-hist(data[,Global_active_power])
+hist(data[,Global_active_power], 
+     main="Global Active Power", 
+     xlab="Global Active Power (kilowatts)", 
+     col="red")
